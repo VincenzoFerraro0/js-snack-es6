@@ -4,48 +4,88 @@ Creare un array di oggetti:
 Ogni oggetto descriverà una bici da corsa con le seguenti proprietà: nome e peso.
 Stampare a schermo la bici con peso minore.
 
+/*
+    MINI TASk
+      Crea un array di oggetti.
+      
+*/
 
+//creo un array di oggetti 
+let biciDaCorsa = [
+  { nome: 'Pinarello-Dogma', peso: 6.8 },
+  { nome: 'Vento SL', peso: 6.2 },
+  { nome: 'Corsa V8', peso: 5.8 },
+  { nome: 'Graziella Gran Turismo', peso: 8.9 },
+  { nome: 'Graziella 3.0', peso: 7.8 },
+]
+// Dichiaro la variabile temporanea
+let biciLeggera = biciDaCorsa[0];
+// ciclo per ogni oggetto
+for (let i in biciDaCorsa) {
+  //singolo oggetto
+  let elemento = biciDaCorsa[i]
+  //Confronto 
+  if (elemento.peso < biciLeggera.peso) {
+    biciLeggera = elemento;
+  }
+}
+// Stampa la bici con il peso minore
+console.log(biciLeggera);
+
+/*
 Snack2
 Creare un array di oggetti di squadre di calcio.
 Ogni squadra avrà diverse proprietà: nome, punti fatti, falli subiti.
 Nome sarà l’unica proprietà da compilare, le altre saranno tutte settate a 0.
 Generare numeri random al posto degli 0 nelle proprietà “punti” fatti e “falli subiti”.
 Infine, creiamo un nuovo array i cui elementi contengono solo nomi e falli subiti e stampiamo tutto in console.
-Snack 3 (Bonus)
-Scrivere una funzione che accetti tre argomenti, un array ( esempio: ['Michele', 'Fabio', 'Roberto', 'Giovanni', 'Simone', 'Chiara'] )e due numeri (a più piccolo di b).
-La funzione ritornerà un nuovo array con li elementi estratti dall'array di partenza che hanno la posizione compresa tra i due numeri (a e b).
 */
+
 
 /*
-    MINI TASK
-        -Imposta la variabile della bicicletta più leggera: Inizia con una bicicletta di riferimento.
-        -Itera sugli indici dell'array usando for...in.
-        -Accedi agli oggetti usando l'indice: Ogni volta che attraversi un indice, usa l'indice per ottenere l'oggetto bicicletta e il suo peso.
-        -Confronta il peso di ogni bicicletta con il peso più leggero trovato finora.
-        -Aggiorna la bicicletta più leggera quando ne trovi una con un peso inferiore.
-*/
+    MINI TASk
+    Inizializza un array di squadre con nome, punti e falli subiti inizialmente a zero.
+    Crea un nuovo array vuoto
+    crea funzione per generare numeri random
+    cicla l'array di oggetti 
+    etrai il singolo elemento
+    assegna alle chiavi appropriate la funzione per generare numeri casuali
+    inserisci ogni elemento del ciclo nel nuovo array con le sole informazioni scelte
+    stampa il nuovo array
 
-//creo un array di oggetti 
-let biciDaCorsa = [
-    { nome:'Pinarello-Dogma' , peso: 6.8},
-    { nome:'Vento SL', peso: 6.2},
-    { nome:'Corsa V8' , peso: 5.8},
-    { nome:'Graziella Gran Turismo', peso: 8.9},
-    { nome:'Graziella 3.0', peso: 7.8},
+*/
+let squadre = [
+  { nome: 'Milan', punti: 0, falliSubiti: 0 },
+  { nome: 'Napoli', punti: 0, falliSubiti: 0 },
+  { nome: 'Atalanta', punti: 0, falliSubiti: 0 },
+  { nome: 'Inter', punti: 0, falliSubiti: 0 },
+  { nome: 'Roma', punti: 0, falliSubiti: 0 }
 ]
 
+const newArray = [];
 
-// Trova la bici con il peso minore con ciclo for in per iterare l'array
-let biciLeggera = biciDaCorsa[0];
-//ottengo l'indice
-for (let i in biciDaCorsa) {
-    //accedo a ogni elemento .peso e lo confronto 
-  if (biciDaCorsa[i].peso < biciLeggera) {
-    // aggiorno la variabile 
-    biciLeggera = biciDaCorsa[i];
-  }
-  console.log(biciDaCorsa[i].peso,biciDaCorsa[i].nome)
+function GeneraNumerRandom(min, max) {
+  return Math.floor(Math.random() * max) + min;
 }
 
-// Stampa la bici con il peso minore
-document.write(`La bici più leggera è: ${biciLeggera.nome} con un peso di ${biciLeggera.peso}kg.`);
+
+for (let i in squadre) {
+
+  //singolo oggetto
+  let elemento = squadre[i]
+
+  elemento.punti = GeneraNumerRandom(1, 50)
+  elemento.falliSubiti = GeneraNumerRandom(1, 50)
+
+  //inserisco ogni elemento del ciclo nel nuovo array con le sole informazioni scelte
+  newArray.push(
+    {
+      nome: elemento["nome"],
+      falliSubiti: elemento["falliSubiti"]
+    }
+  )
+
+}
+console.log(newArray)
+
+
